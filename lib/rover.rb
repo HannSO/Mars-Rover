@@ -11,10 +11,12 @@ ONE_MOVEMENT = 1
   end
 
   def move
-    @position[0] += (Math.cos(@bearing)).round * ONE_MOVEMENT
-    @position[1] += (Math.sin(@bearing)).round * ONE_MOVEMENT
+    @position[0] += (Math.sin(@bearing)).round * ONE_MOVEMENT
+    @position[1] += (Math.cos(@bearing)).round * ONE_MOVEMENT
   end
 
-
+  def turn_left
+    @bearing -= Math::PI/2
+  end
 
 end
