@@ -24,5 +24,35 @@ describe Rover do
         expect(rover.position).to eq([0,1])
       end
     end
+
+    context "rover landed at [1,0], facing West" do
+      before do
+        rover.land([1,0], (Math::PI))
+      end
+      it "moves the rover one movement towards the West(PI)" do
+        rover.move
+        expect(rover.position).to eq([0,0])
+      end
+    end
+
+    context "rover landed at [0,0], facing East" do
+      before do
+        rover.land([0,0], (Math::PI*2))
+      end
+      it "moves the rover one movement towards the East(2 PI)" do
+        rover.move
+        expect(rover.position).to eq([1,0])
+      end
+    end
+
+    context "rover landed at [0,1], facing South" do
+      before do
+        rover.land([0,1], (Math::PI*3/2))
+      end
+      it "moves the rover one movement towards the East" do
+        rover.move
+        expect(rover.position).to eq([0,0])
+      end
+    end
   end
 end
