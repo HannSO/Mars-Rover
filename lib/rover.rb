@@ -1,11 +1,11 @@
 class Rover
 
 
-attr_reader :position, :orientation
+attr_reader :position, :bearing
 
-  def land(coordinate, orientation)
+  def land(coordinate, bearing)
     @position = coordinate
-    @orientation = orientation
+    @bearing = bearing
   end
 
   def move
