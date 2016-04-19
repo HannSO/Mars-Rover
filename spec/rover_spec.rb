@@ -14,5 +14,17 @@ describe Rover do
     end
  	end
 
+  describe "#move" do
+    context "rover landed at origin, facing North" do
+      before do
+        rover.land([0,0], :N)
+      end
 
+      it "moves the rover forward one square" do
+        rover.move
+        expect(rover.position).to eq([0,1])
+
+      end
+    end
+  end
 end

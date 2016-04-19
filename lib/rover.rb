@@ -8,4 +8,9 @@ attr_reader :position, :orientation
     @orientation = orientation
   end
 
+  def move
+    @position[1] += 1
+  end
+
+
 end
