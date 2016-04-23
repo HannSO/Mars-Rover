@@ -1,22 +1,48 @@
+require_relative 'orientator'
+require_relative 'grid'
+
 class Rover
-
-
-attr_reader :position, :bearing
 
 ONE_MOVEMENT = 1
 
-  def land(coordinate, bearing)
-    @position = coordinate
-    @bearing = bearing
+  def initialize (grid, orientator)
+    @grid = grid
+    @orientator = orientator
+  end
+
+  def land(new_coordinate, cardinal_point)
+    raise "Coordinate is not within grid boundary." if !grid.within_border?(new_coordinate)
+    @orientator.set_bearing(cardinal_point)
+    @coordinate = new_coordinate
   end
 
   def move
-    @position[0] += (Math.sin(@bearing)).round * ONE_MOVEMENT
-    @position[1] += (Math.cos(@bearing)).round * ONE_MOVEMENT
+    direction_vector = @orientator.direction_vector
+    tested_coordinate = []
+    tested_coordinate[0] = coordinate[0] + (direction_vector[0] * ONE_MOVEMENT)
+    tested_coordinate[1] = coordinate[1] + (direction_vector[1] * ONE_MOVEMENT)
+    raise "Point is not within grid boundary." if !grid.within_border?(test_coordinate)
+    execute_move(tested_coordinate)
   end
 
-  def turn_left
-    @bearing -= Math::PI/2
+
+  def turn(spin_command)
+   orientator.turn(spin_command)
   end
 
+  def get_cardinal_point
+    orientator.read_cardinal_point
+  end
+
+  def read_coordinate
+    coordinate
+  end
+
+  private
+
+  attr_reader :coordinate, :grid
+
+  def execute_move(tested_coordinate)
+    coordinate = tested_coordinate
+  end
 end
