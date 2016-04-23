@@ -11,17 +11,16 @@ ONE_MOVEMENT = 1
   end
 
   def land(new_coordinate, cardinal_point)
-    raise "Coordinate is not within grid boundary." if !grid.within_border?(new_coordinate)
+    raise "Inputted coordinate is not within grid boundary." if !grid.within_border?(new_coordinate)
     @orientator.set_bearing(cardinal_point)
     @coordinate = new_coordinate
   end
 
   def move
-    direction_vector = @orientator.direction_vector
     tested_coordinate = []
     tested_coordinate[0] = coordinate[0] + (direction_vector[0] * ONE_MOVEMENT)
     tested_coordinate[1] = coordinate[1] + (direction_vector[1] * ONE_MOVEMENT)
-    raise "Point is not within grid boundary." if !grid.within_border?(test_coordinate)
+    raise "Resultant move position is not within grid boundary." if !grid.within_border?(tested_coordinate)
     execute_move(tested_coordinate)
   end
 
@@ -40,9 +39,13 @@ ONE_MOVEMENT = 1
 
   private
 
-  attr_reader :coordinate, :grid
+  attr_reader :coordinate, :grid, :orientator
 
   def execute_move(tested_coordinate)
     coordinate = tested_coordinate
+  end
+
+  def direction_vector
+    @orientator.direction_vector
   end
 end
