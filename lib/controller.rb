@@ -1,8 +1,9 @@
 require_relative 'grid_controller'
 require_relative 'rover_controller'
-require_relative '../logic/grid'
-require_relative '../logic/rover'
-require_relative '../logic/orientator'
+require_relative 'grid'
+require_relative 'rover'
+require_relative 'orientator'
+require 'stringio'
 
 
 class Controller
@@ -16,7 +17,8 @@ class Controller
   def submit_input
     input_lines = []
     loop do
-      input_line = gets.chomp
+      input_line = gets
+      p input_line
       break if input_line == ""
       input_lines << input_line
     end

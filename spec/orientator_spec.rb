@@ -1,4 +1,4 @@
-require 'logic/orientator'
+require 'orientator.rb'
 
 describe Orientator do
 	subject(:orientator){described_class.new(compass_points, spin_commands)}
@@ -55,7 +55,5 @@ describe Orientator do
 			expect(orientator.direction_vector).to eq([0,1])
 		end
 	end
-
-
 
 end

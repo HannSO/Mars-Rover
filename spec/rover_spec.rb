@@ -1,4 +1,4 @@
-require 'logic/rover'
+require 'rover.rb'
 
 describe Rover do
 	subject(:rover){described_class.new(grid,orientator)}
