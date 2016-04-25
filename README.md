@@ -41,7 +41,7 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
   *Rover class*
 
-  -  The responsibility of the rover class is to move, turn, land and have a position. It relies on the direction_vector provided by the orientator, injected in, to know in which direction to move.
+  -  The responsibility of the rover class is to move, turn, land and have a position. It relies on the direction_vector provided by the orientator, injected in, to know in which direction to move. It does not understand any bearings logic.
 
   - It also has a grid injected in because it needs to be able to know the boundaries of the grid/surface it is on.
 
