@@ -1,4 +1,4 @@
-require '/logic/grid'
+require 'grid'
 
 describe Grid do
 	subject(:grid){described_class.new([3,3])}

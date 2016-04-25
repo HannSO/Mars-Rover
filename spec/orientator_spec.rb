@@ -1,4 +1,4 @@
-require 'logic/orientator'
+require 'orientator'
 
 describe Orientator do
 	subject(:orientator){described_class.new(compass_points, spin_commands)}
