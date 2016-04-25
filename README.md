@@ -22,15 +22,13 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
     This is in comparison to an initial draft which contained the following:
 
-    '''
-    CARDINAL_POINTS = {
+
+    'CARDINAL_POINTS = {
     North: [0,+1],
     South: [0,-1],
     West: [-1, 0],
     East: [+1,0]
-    }
-
-    '''
+    } '
 
     ^ The above meant that, to add more/change the cardinal points, either:
       *a)* If the hash was injected in, a lot of logic would have to be contained within this hash, that arguably, should be part of the orientator class. The orientator would have to assume a lot about this hash - understanding how to interact with array values.
