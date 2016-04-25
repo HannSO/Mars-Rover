@@ -5,7 +5,7 @@ require_relative '../logic/rover'
 require_relative '../logic/orientator'
 
 
-class Controller
+class Instrument
 
 
   def initialize (grid_controller = GridController.new, rover_controller = RoverController.new)
