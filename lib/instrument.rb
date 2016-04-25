@@ -1,34 +1,51 @@
-require_relative 'grid_controller'
-require_relative 'rover_controller'
-require_relative '../logic/grid'
-require_relative '../logic/rover'
-require_relative '../logic/orientator'
+require_relative 'grid_parser'
+require_relative 'rover_parser'
+require_relative 'grid'
+require_relative 'rover'
+require_relative 'orientator'
 
 
 class Instrument
 
+  def initialize (grid_parser_klass = GridParser, rover_parser_klass = RoverParser)
+    @grid_parser_klass = grid_parser_klass
+    @rover_parser_kilass = rover_parser_klass
 
-  def initialize (grid_controller = GridController.new, rover_controller = RoverController.new)
-    @grid_controller = grid_controller
-    @rover_controller = rover_controller
   end
 
-  def submit_input
-    input_lines = []
-    loop do
-      input_line = gets.chomp
-      break if input_line == ""
-      input_lines << input_line
+  def initiate_rover_fleet(commands_string)
+    set_plateau(commands_string)
+    set_rovers(commands_string)
+  end
+
+  private
+
+  def set_plateau (commands_string)
+    grid_parser = grid_parser_klass.new(commands_string)
+    @plateau = Grid.new(grid_parser.coordinate)
+  end
+
+  def set_rovers(commands_string)
+    rover_parser = rover_parser_klass.new(commands_string)
+    for |x| in rover_parser.number_rovers do
+      rover = Rover.new(new_orientator, plateau)
+      execute_rover_commands(rover_parser.commands[x], rover)
     end
-    grid_object = grid_controller.create_grid_object(input_lines[0])
-    rover_lines = input_lines[1..(input_lines.length-1)]
-    print rover_controller.create_rovers_with_commands(rover_lines, grid_object)
-    puts "\n"
+  end
+
+  def new_orientator
+    Orientator.new(COMPASS_POINTS, SPIN_COMMANDS)
+  end
+
+  def execute_commands(commands,rover)
+    commands.each do |command|
+      rover.command
+    end
   end
 
 
-private
- attr_reader :grid_controller, :rover_controller
+
+  attr_reader :plateau
 
 
 end
