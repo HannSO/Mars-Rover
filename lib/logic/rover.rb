@@ -29,7 +29,7 @@ ONE_MOVEMENT = 1
    orientator.turn(spin_command)
   end
 
-  def get_cardinal_point
+  def read_cardinal_point
     orientator.read_cardinal_point
   end
 
@@ -42,7 +42,7 @@ ONE_MOVEMENT = 1
   attr_reader :coordinate, :grid, :orientator
 
   def execute_move(tested_coordinate)
-    coordinate = tested_coordinate
+    @coordinate = tested_coordinate
   end
 
   def direction_vector

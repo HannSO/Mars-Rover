@@ -1,4 +1,4 @@
-require 'rover'
+require 'logic/rover'
 
 describe Rover do
 	subject(:rover){described_class.new(grid,orientator)}
@@ -51,7 +51,8 @@ describe Rover do
 	describe "#get_cardinal_point" do
 		it "calls on the orientator to read_cardinal_point" do
 			expect(orientator).to receive(:read_cardinal_point)
-			rover.get_cardinal_point
+			rover.read_cardinal_point
 		end
 	end
+
 end

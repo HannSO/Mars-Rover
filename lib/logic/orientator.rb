@@ -29,8 +29,7 @@ class Orientator
 
   private
 
-  attr_reader :spin_commands, :compass_points
-  attr_accessor :bearing
+  attr_reader :spin_commands, :compass_points, :bearing
 
   def x_direction_value
     (Math.sin(bearing)).round
