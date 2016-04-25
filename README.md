@@ -15,35 +15,35 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
   *Orientator class*
 
-    *  The responsibility of this class is to understanding bearings and directions. I saw it as an object that the rover would have - like a navigator. It is something that could be recycled and injected into a another moving object.
+  *  The responsibility of this class is to understanding bearings and directions. I saw it as an object that the rover would have - like a navigator. It is something that could be recycled and injected into a another moving object.
 
-    * I decided not to hardcode the cardinal points into the Orientator class, in order to adhere to the Open-Close Principle. The cardinal points, with their corresponding bearing, can be injected into the class in hash form. These could be stored as a constant in a separate file, which would be useful if a range of different classes depended on them within a system. This means these commands can be easily altered. You could for example add :NW, :NE etc, or change :N to :North easily.
+  * I decided not to hardcode the cardinal points into the Orientator class, in order to adhere to the Open-Close Principle. The cardinal points, with their corresponding bearing, can be injected into the class in hash form. These could be stored as a constant in a separate file, which would be useful if a range of different classes depended on them within a system. This means these commands can be easily altered. You could for example add :NW, :NE etc, or change :N to :North easily.
 
-    * I decided that bearings in radians should be the primary attribute of  this class, because this is something that can be mapped to a wide variety of scenarios, rather than storing the more superficial cardinal point - like :North, :East - which can now be changed(as discussed above). It also allows for a range of trig functions to be used. In other scenarios, bearings in radians is more likely to be readable to other classes.
+  * I decided that bearings in radians should be the primary attribute of  this class, because this is something that can be mapped to a wide variety of scenarios, rather than storing the more superficial cardinal point - like :North, :East - which can now be changed(as discussed above). It also allows for a range of trig functions to be used. In other scenarios, bearings in radians is more likely to be readable to other classes.
 
-    This is in comparison to an initial draft which contained the following:
+  This is in comparison to an initial draft which contained the following:
 
 
-    'CARDINAL_POINTS = {
-    North: [0,+1],
-    South: [0,-1],
-    West: [-1, 0],
-    East: [+1,0]
-    } '
+  'CARDINAL_POINTS = {
+  North: [0,+1],
+  South: [0,-1],
+  West: [-1, 0],
+  East: [+1,0]
+  } '
 
-     The above meant that, to add more/change the cardinal points, either:
-      *a)* If the hash was injected in, a lot of logic would have to be contained within this hash, that arguably, should be part of the orientator class. The orientator would have to assume a lot about this hash - understanding how to interact with array values.
-      *b)* Or it would be hard coded into the class.
+   The above meant that, to add more/change the cardinal points, either:
+    *a)* If the hash was injected in, a lot of logic would have to be contained within this hash, that arguably, should be part of the orientator class. The orientator would have to assume a lot about this hash - understanding how to interact with array values.
+    *b)* Or it would be hard coded into the class.
 
-      There are less obvious  ways to add other cardinal points like :North_West ; the data is not as malleable.
+    There are less obvious  ways to add other cardinal points like :North_West ; the data is not as malleable.
 
-    -  Turning commands: "left", "right", are injected in the same way as the cardinal_points, to adhere to the Open Close Principle.
+  -  Turning commands: "left", "right", are injected in the same way as the cardinal_points, to adhere to the Open Close Principle.
 
   *Rover class*
 
-    -  The responsibility of the rover class is to move, turn, land and have a position. It relies on the direction_vector provided by the orientator, injected in, to know in which direction to move.
+  -  The responsibility of the rover class is to move, turn, land and have a position. It relies on the direction_vector provided by the orientator, injected in, to know in which direction to move.
 
-    - It also has a grid injected in because it needs to be able to know the boundaries of the grid/surface it is on.
+  - It also has a grid injected in because it needs to be able to know the boundaries of the grid/surface it is on.
 
 
 
