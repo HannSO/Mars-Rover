@@ -4,13 +4,13 @@ describe Rover do
 	subject(:rover){described_class.new(grid,orientator)}
 	 let(:grid){double (:grid)}
 	 let(:orientator){double(:orientator)}
+
 	 before do
 	 	allow(orientator).to receive(:set_bearing).with(:cardinal_point)
 		allow(orientator).to receive(:read_cardinal_point)
 		allow(orientator).to receive(:turn).with(:command)
  	end
-
-
+	
 	describe "#land" do
 		it "raises error when you try and land plane out of grid boundary" do
 			 allow(grid).to receive(:within_border?).with([3,3]).and_return(false)

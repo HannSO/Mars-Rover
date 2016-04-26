@@ -3,23 +3,29 @@ require 'grid_parser'
 
 describe GridParser do
 	subject(:grid_parser){described_class.new(all_input_string)}
+	let(:grid_klass){double(:grid_klass)}
+
 
 	context "correctly formatted input." do
+		# before do
+		# 	allow(grid_klass).to receive(:new).with([5,5])
+		# end
+
 	  let(:all_input_string) do
 	    "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"
 	  end
-	  it "sets the coordinate to be an an array of the first line, without spaces" do
-	    expect(grid_parser.coordinate).to eq([5,5])
+	  it "creates a grid object, initialized with coordinates as array of the first line digits" do
+	    expect(grid_klass).to receive(:new).with([5,5])
+			grid_parser.get_object
 	  end
 	end
-
 
 	context "poorly formatted input:four numbers." do
 		let(:all_input_string) do
 			"5 5 6 7\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"
 		end
 		it "raises an error if two numbers are not submitted into line" do
-			expect{grid_parser.coordinate}.to raise_error("First line must contain 2 digits and a space. You submitted 5 5 6 7")
+			expect{grid_parser.get_object}.to raise_error("First line must contain 2 digits and a space. You submitted 5 5 6 7")
 		end
 	end
 
