@@ -1,6 +1,7 @@
 require_relative 'grid'
 
 class GridParser
+  attr_reader :grid_klass
 
   def initialize(all_input_string, grid_klass = Grid)
     @all_input_string = all_input_string
@@ -13,7 +14,9 @@ class GridParser
 
   private
 
-  attr_reader :grid_klass
+
+
+
 
   def coordinate
     coordinate = []
