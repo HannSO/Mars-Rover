@@ -1,3 +1,5 @@
+require_relative 'rover_parser'
+
 class MultipleRoversParser
 
   NUMBER_LINES_PER_ROVER = 2
@@ -9,8 +11,9 @@ class MultipleRoversParser
   end
 
   def get_initiated_rover_objects
-    for number_rovers do
-      rover_parser_klass.new
+    p number_rovers
+    number_rovers.times do |x|
+      @rover_parser_klass.new
     end
   end
 
@@ -35,7 +38,6 @@ class MultipleRoversParser
   #  private
   #
   #  attr_reader :grid
-  #
   def commands_organised_by_rover
     relevent_lines.each_slice(NUMBER_LINES_PER_ROVER).to_a
   end
@@ -43,7 +45,7 @@ class MultipleRoversParser
   def number_rovers
     commands_organised_by_rover.count
   end
-  #
+
   def relevent_lines
     seperate_lines[1..seperate_lines.length]
   end

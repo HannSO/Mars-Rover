@@ -9,7 +9,7 @@ describe MultipleRoversParser do
 
   describe "#get_initiated_rover_objects" do
     context "five line input: four lines of rover input " do
-      it "instantiates a new rover_parser to run the commands twice" do
+      it "instantiates a new rover_parser, for each rover, to run the commands twice" do
         expect(rover_parser_klass).to receive(:new).twice
         multiple_rovers_parser.get_initiated_rover_objects
       end
