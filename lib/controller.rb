@@ -17,7 +17,7 @@ class Controller
   def submit_input
     input_lines = []
     loop do
-      input_line = gets
+      input_line = gets.chomp
       p input_line
       break if input_line == ""
       input_lines << input_line

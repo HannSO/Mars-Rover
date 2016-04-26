@@ -8,7 +8,7 @@ describe Controller do
     context 'Correctly formatted data inputted' do
       before do
           # allow(STDIN).to receive(:gets) { "5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"}
-        controller.stub(:gets) {"5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM\n\n"}
+        controller.stub(:gets) {"5 5\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM\n\n"+""}
       end
 
 
