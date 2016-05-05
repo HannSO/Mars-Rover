@@ -22,7 +22,7 @@ class Controller
 
   attr_reader :grid_parser_klass, :multiple_rovers_parser_klass, :grid
 
-  def set_grid_object(all_input_string)
+  def set_grid(all_input_string)
     grid_parser = grid_parser_klass.new(all_input_string)
     @grid = grid_parser.get_object
   end
