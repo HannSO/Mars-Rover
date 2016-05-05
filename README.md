@@ -3,7 +3,8 @@ MARS ROVER CHALLENGE
 
 Instructions
 
-- Ensure ruby and rspec are installed
+- Ruby version 2.1.5 or later should be installed
+- Run bundle to install Rspec and Rake gems
 
 *To run tests*
 - Navigate into folder in terminal.
@@ -11,7 +12,7 @@ Instructions
 
 *To submit input*
 - Navigate into folder in terminal
-- 'run Rake'
+- `run Rake`
 - Submit input
 - Hold 'Ctrl' 'd' when done.
 
