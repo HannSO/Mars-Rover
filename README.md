@@ -63,9 +63,9 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
 
   *Grid class*
-   * The grid class models the plateau (named grid for ease of spelling!). It is initialized with a 2 coordinates - the second of which defaults to [0,0] if not entered. (The controller allows this default to occur).
+   - The grid class models the plateau (named grid for ease of spelling!). It is initialized with a 2 coordinates - the second of which defaults to [0,0] if not entered. (The controller allows this default to occur).
 
-   * There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
+   - There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
    My approach does, however, allow for flexibility/recyclability. If the grid was part of larger grid, for example, and the second coordinate was (-5,-5), it would still function. And, there is an option to set the second coordinate.
 
 
