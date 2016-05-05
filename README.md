@@ -8,7 +8,7 @@ Instructions
 
 *To run tests*
 - Navigate into folder in terminal.
-- `Rake`
+- `rake`
 
 *To submit input*
 - Navigate into folder in terminal
