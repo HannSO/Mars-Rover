@@ -1,10 +1,7 @@
 require 'grid_parser'
-
-
 describe GridParser do
 	let(:grid_klass){double :grid_klass}
 	subject(:grid_parser){described_class.new(all_input_string, grid_klass)}
-
 
 	context "correctly formatted input." do
 		before do
@@ -20,7 +17,7 @@ describe GridParser do
 			grid_parser.get_object
 	  end
 	end
-
+	
 	context "poorly formatted input:four numbers." do
 		let(:all_input_string) do
 			"5 5 6 7\n1 2 N\nLMLMLMLMM\n3 3 E\nMMRMMRMRRM"

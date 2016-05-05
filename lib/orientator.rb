@@ -43,6 +43,4 @@ class Orientator
     @bearing = @bearing % (Math::PI*2)
   end
 
-
-
 end

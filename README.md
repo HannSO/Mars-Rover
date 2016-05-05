@@ -1,12 +1,26 @@
 MARS ROVER CHALLENGE
 ---
 
+Instructions
 
+- Ensure ruby and rspec are installed
+
+*To run tests*
+- Navigate into folder in terminal.
+- `Rake`
+
+*To submit input*
+- Navigate into folder in terminal
+- 'run Rake'
+- Submit input
+- Hold 'Ctrl' 'd' when done.
 
 Assumptions
 ---
 - Rovers can occupy the same position
 - Rovers can not go over the edge of the plateau
+- Input may be incorrectly submitted
+- Design may be altered in the future to accommodate new commands
 
 Design
 ---
@@ -37,7 +51,7 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
     There are less obvious  ways to add other cardinal points like :North_West ; the data is not as malleable.
 
-  -  Turning commands: "left", "right", are injected in the same way as the cardinal_points, to adhere to the Open Close Principle.
+  -  Turning commands: "left", "right", are injected in the same way as the cardinal_points, to adhere to the Open Close Principle. Allowing for new commands like "turn around"/"a quarter left"
 
   *Rover class*
 
@@ -53,6 +67,24 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
    * There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
    My approach does, however, allow for flexibility/recyclability. If the grid was part of larger grid, for example, and the second coordinate was (-5,-5), it would still function. And, there is an option to set the second coordinate.
 
+
+   *PARSERS & CONTROLLERS*
+
+   - These have been designed to respond to the exact input type specified by the brief and create the relevent rovers and grids with commands.
+
+   *Grid Parser*
+   - Handles all the input and is responsible for selecting relevant lines to create grid, and returning a grid object to the Controller.
+
+   *Multiple Rovers Parser*
+   - Handles all input and is responsible for selecting relevant lines for all rovers. It identifies the correct data needed for each rover, and creates a Rover Parser for each group of this data, to handle this. It tells each Rover Parser where in the sequence the rover is, for error handling.
+   - Receives the rover results from the Rover Parser, so it has multiple rover results.
+
+   *Rover Parser*
+   - Uses data given by Multiple Rovers Parser to create rovers and initiate the commands on the rovers.
+   - Reads the results of the rover, which are then called from the rover parser.
+
+   *Controller*
+   - Receives input from user and sends this to the parsers to handle. Prints the formatted results of the all the rovers by calling on the Multiple Rover Parsers
 
 
   Improvements

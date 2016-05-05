@@ -14,10 +14,6 @@ class GridParser
 
   private
 
-
-
-
-
   def coordinate
     coordinate = []
     relevent_lines.scan(/\d+/) do |x|

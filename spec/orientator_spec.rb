@@ -55,7 +55,5 @@ describe Orientator do
 			expect(orientator.direction_vector).to eq([0,1])
 		end
 	end
-
-
-
+	
 end

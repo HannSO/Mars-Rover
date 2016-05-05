@@ -1,11 +1,12 @@
 require_relative 'orientator'
 require_relative 'grid'
+require_relative 'rover_command_constants'
 
 class Rover
 
 ONE_MOVEMENT = 1
 
-  def initialize (grid, orientator)
+  def initialize (grid, orientator = Orientator.new(COMPASS_POINTS, SPIN_COMMANDS))
     @grid = grid
     @orientator = orientator
   end
@@ -17,13 +18,9 @@ ONE_MOVEMENT = 1
   end
 
   def move
-    tested_coordinate = []
-    tested_coordinate[0] = coordinate[0] + (direction_vector[0] * ONE_MOVEMENT)
-    tested_coordinate[1] = coordinate[1] + (direction_vector[1] * ONE_MOVEMENT)
-    raise "Resultant move position is not within grid boundary." if !grid.within_border?(tested_coordinate)
-    execute_move(tested_coordinate)
+    raise "Resultant move position is not within grid boundary." if !grid.within_border?(test_coordinate)
+    execute_move(test_coordinate)
   end
-
 
   def turn(spin_command)
    orientator.turn(spin_command)
@@ -37,9 +34,32 @@ ONE_MOVEMENT = 1
     coordinate
   end
 
+  def read_x_coordinate
+    coordinate[0]
+  end
+
+  def read_y_coordinate
+    coordinate[1]
+  end
+
   private
 
   attr_reader :coordinate, :grid, :orientator
+
+  def test_coordinate
+    test_coordinate = []
+    test_coordinate[0] = coordinate[0] + new_x_movement
+    test_coordinate[1] = coordinate[1] + new_y_movement
+    test_coordinate
+  end
+
+  def new_x_movement
+    (direction_vector[0] * ONE_MOVEMENT)
+  end
+
+  def new_y_movement
+    (direction_vector[1] * ONE_MOVEMENT)
+  end
 
   def execute_move(tested_coordinate)
     @coordinate = tested_coordinate
