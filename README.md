@@ -63,15 +63,15 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
 
   *Grid class*
-   - The grid class models the plateau (named grid for ease of spelling!). It is initialized with a 2 coordinates - the second of which defaults to [0,0] if not entered. (The controller allows this default to occur).
+  - The grid class models the plateau (named grid for ease of spelling!). It is initialized with a 2 coordinates - the second of which defaults to [0,0] if not entered. (The controller allows this default to occur).
 
-   - There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
+  - There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
    My approach does, however, allow for flexibility/recyclability. If the grid was part of larger grid, for example, and the second coordinate was (-5,-5), it would still function. And, there is an option to set the second coordinate.
 
 
    *PARSERS & CONTROLLERS*
 
-   - These have been designed to respond to the exact input type specified by the brief and create the relevant rovers and grids with commands.
+   - These have been designed to respond to the exact input type specified by the brief and create the relevant rovers and grids with command.
 
    *Grid Parser*
    - Handles all the input and is responsible for selecting relevant lines to create grid, and returning a grid object to the Controller.
@@ -86,3 +86,5 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
    *Controller*
    - Receives input from user and sends this to the parsers to handle. Prints the formatted results of the all the rovers by calling on the Multiple Rover Parsers
+
+   Improvements: I would like to research design patterns to improve the Controller/Parser aspect of my design.  Ideally, I would like to find an alternative to the switch statement in my Rover Parser, when the different commands are being handled, as these are commands with the corresponding command strings are hard coded in so do not adhere well to adhere to the Open Close Principle. This section could also be redesigned, so that rovers cannot land on the same coordinate.
