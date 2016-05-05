@@ -23,6 +23,11 @@ Assumptions
 - Input may be incorrectly submitted
 - Design may be altered in the future to accommodate new commands
 
+Approach
+---
+- This project has been developed with TDD, using both unit and feature tests.
+- The example input and output is used in the feature test.
+
 Design
 ---
 
