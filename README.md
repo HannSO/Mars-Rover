@@ -26,9 +26,9 @@ Assumptions
 Design
 ---
 
-This design is composed of a *Grid*, *Orientator* and *Rover* class. There are also *Controller* class that parses the input as formatted by the brief, and tells the different classes how to interact, behaving as factories.
+This design is composed of a *Grid*, *Orientator* and *Rover* class. There are also *Controller* and *Parser* classes that parses the input as formatted by the brief, and tells the different classes how to interact.
 
-  *Orientator class*
+*Orientator class*
 
   *  The responsibility of this class is to understanding bearings and directions. I saw it as an object that the rover would have - like a navigator. It is something that could be recycled and injected into a another moving object.
 
@@ -54,7 +54,7 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
   -  Turning commands: "left", "right", are injected in the same way as the cardinal_points, to adhere to the Open Close Principle. Allowing for new commands like "turn around"/"a quarter left"
 
-  *Rover class*
+*Rover class*
 
   -  The responsibility of the rover class is to move, turn, land and have a position. It relies on the direction_vector provided by the orientator, injected in, to know in which direction to move. It does not understand any bearings logic.
 
@@ -62,16 +62,16 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
 
 
-  *Grid class*
+*Grid class*
   - The grid class models the plateau (named grid for ease of spelling!). It is initialized with a 2 coordinates - the second of which defaults to [0,0] if not entered. (The controller allows this default to occur).
 
   - There are private methods which clarify what the lower boundary and upper boundary of the x and y values. Given that the brief specifies that the inputted coordinate would be the upper-right corner, these are potentially unnecessary for an MVP. There could be a method which ensures that the positive values are inputted for the upper-right coordinate on initialization, and the other coordinate is always set to [0,0].
    My approach does, however, allow for flexibility/recyclability. If the grid was part of larger grid, for example, and the second coordinate was (-5,-5), it would still function. And, there is an option to set the second coordinate.
 
 
-   *PARSERS & CONTROLLERS*
+*PARSERS & CONTROLLERS*
 
-   - These have been designed to respond to the exact input type specified by the brief and create the relevant rovers and grids with command.
+  - These have been designed to respond to the exact input type specified by the brief and create the relevant rovers and grids with command.
 
    *Grid Parser*
    - Handles all the input and is responsible for selecting relevant lines to create grid, and returning a grid object to the Controller.
