@@ -87,4 +87,5 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
    *Controller*
    - Receives input from user and sends this to the parsers to handle. Prints the formatted results of the all the rovers by calling on the Multiple Rover Parsers
 
-   Improvements: I would like to research design patterns to improve the Controller/Parser aspect of my design.  Ideally, I would like to find an alternative to the switch statement in my Rover Parser, when the different commands are being handled, as these are commands with the corresponding command strings are hard coded in so do not adhere well to adhere to the Open Close Principle. This section could also be redesigned, so that rovers cannot land on the same coordinate.
+   Improvements: I would like to research design patterns to improve the Controller/Parser aspect of my design. I have focused primarily on the logic of the Orientator, Rover, and Plateau.
+  Ideally, I would like to find an alternative to the switch statement in my Rover Parser, when the different commands are being handled, as these are commands with the corresponding command strings are hard coded in so do not adhere well to adhere to the Open Close Principle. This section could also be redesigned, so that rovers cannot land on the same coordinate.
