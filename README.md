@@ -70,7 +70,7 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
    *PARSERS & CONTROLLERS*
 
-   - These have been designed to respond to the exact input type specified by the brief and create the relevent rovers and grids with commands.
+   - These have been designed to respond to the exact input type specified by the brief and create the relevant rovers and grids with commands.
 
    *Grid Parser*
    - Handles all the input and is responsible for selecting relevant lines to create grid, and returning a grid object to the Controller.
@@ -85,10 +85,3 @@ This design is composed of a *Grid*, *Orientator* and *Rover* class. There are a
 
    *Controller*
    - Receives input from user and sends this to the parsers to handle. Prints the formatted results of the all the rovers by calling on the Multiple Rover Parsers
-
-
-  Improvements
-   ---
-
-   -  I would like to work on refactoring and simplifying the controller methods - particularly the rover controller; they are currently too long. Also, because the logic of how the input relates to commands "L" means rover.turn(:l), it does not adhere very well to the Open Closed principle.
-   - Change the design so that rovers cannot occupy the same space
